@@ -1,0 +1,13 @@
+{% import "_includes/forms" as forms %}
+<div class="first">
+	{{ forms.textField({
+		label: "TinyPNG API Key"|t,
+		instructions: 'Get your API key at <a href="https://tinypng.com/developers" target="_blank">https://tinypng.com/developers</a>',
+		id: 'apiKey',
+		name: 'apiKey',
+		value: settings.apiKey,
+		type: 'text',
+		required: true,
+		errors: settings.getErrors('apiKey')
+	}) }}
+</div>
