@@ -44,7 +44,7 @@ class TitchPlugin extends BasePlugin {
 
 	public function getReleaseFeedUrl()
 	{
-//		return 'https://raw.githubusercontent.com/ethercreative/titch/master/releases.json';
+		return 'https://raw.githubusercontent.com/ethercreative/titch/master/releases.json';
 	}
 
 	protected function getSettingsModel()
@@ -62,20 +62,10 @@ class TitchPlugin extends BasePlugin {
 	public function init()
 	{
 		require_once("vendor/autoload.php");
-		
+
 		if ($this->getSettings()->apiKey) {
-			craft()->on('assets.onSaveAsset', function(Event $event) {
-//
-//				try {
-//					\Tinify\setKey($this->getSettings()->apiKey);
-//					\Tinify\validate();
-//					$valid = true;
-//				} catch(\Tinify\Exception $e) {
-//					TitchPlugin::log($e->getMessage(), LogLevel::Error);
-//					$valid = false;
-//				}
-//
-//				if ($valid) craft()->titch->compress($event->params['asset']);
+			craft()->on('content.onSaveContent', function(Event $event) {
+				craft()->titch->startTask();
 			});
 		}
 	}

@@ -7,7 +7,8 @@ class Titch_SettingsModel extends BaseModel {
 	protected function defineAttributes()
 	{
 		return [
-			'apiKey' => [ AttributeType::String, 'required' => true ]
+			'apiKey' => [ AttributeType::String, 'required' => true ],
+			'lastRun' => [ AttributeType::String ]
 		];
 	}
 
@@ -21,7 +22,6 @@ class Titch_SettingsModel extends BaseModel {
 
 	public function validateApiKey ($attribute)
 	{
-		TitchPlugin::log(print_r($this, true));
 		$key = $this->$attribute;
 
 		try {
